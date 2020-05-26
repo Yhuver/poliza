@@ -77,7 +77,7 @@
                <div class="top-logo">
                   <a href="index.html" class="logo">
                   <img src="images/logo.png" class="img-fluid" alt="">
-                  <span>Sofbox</span>
+                  <span>UFPS</span>
                   </a>
                </div>
             </div>
@@ -187,7 +187,41 @@
             <div class="container-fluid">
                <div class="row">
                   <div class="col-lg-12">
-                     Here Add Your HTML Content.....
+                     <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                           <div class="iq-header-title">
+                              <h4 class="card-title">Formulario de Clientes</h4>
+                           </div>
+                        </div>
+                        <div class="iq-card-body">
+                           <p>Aca podras registrar a los clientes</p>
+                           <form>
+                              <div class="form-group">
+                                 <label for="email">Cedula:</label>
+                                 <input type="number" class="form-control" id="cedula">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Dirección:</label>
+                                 <input type="text" class="form-control" id="direccion">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Telefono:</label>
+                                 <input type="text" class="form-control" id="telefono">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Estado:</label>
+                                 <input type="text" class="form-control" id="estado">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Edad:</label>
+                                 <input type="number" class="form-control" id="edad">
+                              </div>
+                              
+                              <button type="submit" class="btn btn-primary" id="registrar_cliente">Registrar</button>
+                              
+                           </form>
+                        </div>
+                     </div>
                   </div>
                </div>
             </div>
@@ -244,4 +278,23 @@
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
    </body>
+   <script>
+   
+   $("#registrar_cliente").click(function(){
+	   $.ajax({
+			url : 'GetUserServlet',
+			data : {
+				'cedula' : $('#cedula').val(),
+				'direccion': $('#direccion').val(),
+				'telefono': $('#telefono').val(),
+				'estado': $('#estado').val(),
+				'edad': $('#edad').val()
+			},
+			success : function(responseText) {
+				console.log("Prueba")
+			}
+		}); 
+   });
+   
+   </script>
 </html>
