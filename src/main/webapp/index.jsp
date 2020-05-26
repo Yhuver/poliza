@@ -1,4 +1,6 @@
 <!doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -196,22 +198,39 @@
                         </div>
                         <div class="iq-card-body">
                            <p>Aca podras registrar a los clientes</p>
-                           <form>
+               			<c:set var="alerta" scope="request" value = "${requestScope.msgResultado}"/>
+		<c:if test="${alerta!=null}">  
+		<c:set var="bandera" scope="request" value = "${requestScope.bandera}"/>
+		<c:if test="${bandera==false}">  
+			<div class="alert alert-danger" role="alert">
+	  			<c:out value="${alerta}"/>
+			</div>
+			</c:if>
+		</c:if>
+		<c:if test="${alerta!=null}">  
+		<c:set var="bandera" scope="request" value = "${requestScope.bandera}"/>
+		<c:if test="${bandera==true}">  
+			<div class="alert alert-success" role="alert">
+	  			<c:out value="Registro exitoso"/>
+			</div>
+			</c:if>
+		</c:if>
+                           <form action="AgregarClienteController" method="post">
                               <div class="form-group">
                                  <label for="email">Cedula:</label>
-                                 <input type="number" class="form-control" id="cedula">
+                                 <input name="cedula" type="number" class="form-control" id="cedula">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Dirección:</label>
-                                 <input type="text" class="form-control" id="direccion">
+                                 <input name="direccion" type="text" class="form-control" id="direccion">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Telefono:</label>
-                                 <input type="text" class="form-control" id="telefono">
+                                 <input name="telefono" type="text" class="form-control" id="telefono">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Estado:</label>
-           <select class="form-control" id="estado">
+           <select class="form-control" id="estado" name="estado">
                                    
                                     <option>Casado</option>
                                     <option>Soltero</option>
@@ -221,10 +240,14 @@
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Edad:</label>
-                                 <input type="number" class="form-control" id="edad">
+                                 <input name="edad" type="number" class="form-control" id="edad">
                               </div>
                               
+<<<<<<< HEAD
                               <input type="button" class="btn btn-primary" id="registrar_cliente" value="registrar">
+=======
+                              <button class="btn btn-primary" id="registrar_cliente">Registrar</button>
+>>>>>>> 68a5f31d58ac5687fa889a2ea8278739bd9611a3
                               
                            </form>
                         </div>
@@ -286,23 +309,23 @@
       <script src="js/custom.js"></script>
    </body>
    <script>
-   
-   $("#registrar_cliente").click(function(){
-	   $.ajax({
-			url : 'AgregarClienteController',
-			data : {
-				'cedula' : $('#cedula').val(),
-				'direccion': $('#direccion').val(),
-				'telefono': $('#telefono').val(),
-				'estado': $('#estado').val(),
-				'edad': $('#edad').val()
-			},
-			method:'post',
-			success : function(responseText) {
-				console.log("Prueba")
-			}
-		}); 
-   });
+
+//    $("#registrar_cliente").click(function(){
+// 	   $.ajax({
+// 			url : 'AgregarClienteController',
+// 			data : {
+// 				'cedula' : $('#cedula').val(),
+// 				'direccion': $('#direccion').val(),
+// 				'telefono': $('#telefono').val(),
+// 				'estado': $('#estado').val(),
+// 				'edad': $('#edad').val()
+// 			},
+// 			method:"post",
+// 			success : function(responseText) {
+// 				console.log(responseText)
+// 			}
+// 		}); 
+//    });
    
    </script>
 </html>
