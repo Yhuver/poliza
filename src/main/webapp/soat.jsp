@@ -59,8 +59,8 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="vehiculo.jsp">SOAT</a></li>
-                           <li><a href="poliza.jsp">Poliza</a></li>
+                           <li><a href="soat.jsp">Soat</a></li>
+                           <li><a href="index.html">Riesgos</a></li>
                         </ul>
                      </li>
                     
@@ -198,10 +198,15 @@
                            <p>Aca podras registrar a los clientes</p>
                            <form>
                               <div class="form-group">
-                                 <label for="email">Cedula:</label>
-                                 <input type="number" class="form-control" id="cedula">
-                              </div>
-                              <div class="form-group">
+                                 <label for="pwd">Clientes:</label>
+           <select class="form-control" id="estado">
+                                   
+                                    <option>Prueba</option>
+                                    <option>Sasdsa</option>
+                                    <option>Viudoasd</option>
+                              
+                                 </select>
+                              </div> <div class="form-group">
                                  <label for="pwd">Dirección:</label>
                                  <input type="text" class="form-control" id="direccion">
                               </div>
@@ -224,7 +229,7 @@
                                  <input type="number" class="form-control" id="edad">
                               </div>
                               
-                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="registrar">
+                              <button type="submit" class="btn btn-primary" id="registrar_cliente">Registrar</button>
                               
                            </form>
                         </div>
@@ -289,7 +294,7 @@
    
    $("#registrar_cliente").click(function(){
 	   $.ajax({
-			url : 'AgregarClienteController',
+			url : 'GetUserServlet',
 			data : {
 				'cedula' : $('#cedula').val(),
 				'direccion': $('#direccion').val(),
@@ -297,7 +302,6 @@
 				'estado': $('#estado').val(),
 				'edad': $('#edad').val()
 			},
-			method:'post',
 			success : function(responseText) {
 				console.log("Prueba")
 			}

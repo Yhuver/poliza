@@ -197,34 +197,44 @@
                         <div class="iq-card-body">
                            <p>Aca podras registrar a los clientes</p>
                            <form>
-                              <div class="form-group">
-                                 <label for="email">Cedula:</label>
-                                 <input type="number" class="form-control" id="cedula">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Dirección:</label>
-                                 <input type="text" class="form-control" id="direccion">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Telefono:</label>
-                                 <input type="text" class="form-control" id="telefono">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Estado:</label>
-           <select class="form-control" id="estado">
+                           <div class="form-group">
+                                 <label for="pwd">Persona:</label>
+           <select class="form-control" id="persona" name="persona">
                                    
-                                    <option>Casado</option>
-                                    <option>Soltero</option>
-                                    <option>Viudo</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
                               
                                  </select>
                               </div>
+                              <h2>Datos del vehiculo</h2>
                               <div class="form-group">
-                                 <label for="pwd">Edad:</label>
-                                 <input type="number" class="form-control" id="edad">
+                                 <label for="email">modelo:</label>
+                                 <input type="number" class="form-control" name="modelo" id="marca">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Marca:</label>
+                                 <input type="text" class="form-control" name="marca" id="direccion" >
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Año:</label>
+                                 <input type="number"  name="anio"class="form-control" id="telefono">
                               </div>
                               
-                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="registrar">
+                              <div class="form-group">
+                                 <label for="pwd">Placa:</label>
+                                 <input type="text" class="form-control"  name="placa" id="edad">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Serial de carroceria:</label>
+                                 <input type="text" class="form-control"  name="serial" id="edad">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">valor:</label>
+                                 <input type="text" class="form-control"  name="valor" id="edad">
+                              </div>
+           
+                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="Comprar Soat">
                               
                            </form>
                         </div>
