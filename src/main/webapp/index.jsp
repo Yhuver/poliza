@@ -210,7 +210,13 @@
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Estado:</label>
-                                 <input type="text" class="form-control" id="estado">
+           <select class="form-control" id="estado">
+                                   
+                                    <option>Casado</option>
+                                    <option>Soltero</option>
+                                    <option>Viudo</option>
+                              
+                                 </select>
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Edad:</label>
