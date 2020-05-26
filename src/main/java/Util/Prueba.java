@@ -19,11 +19,11 @@ public class Prueba {
 		// Codigo para registrar clientes
 		Cliente cliente = new Cliente();
 
-		cliente.setCedula("190500021");
+		cliente.setCedula("190500022");
 		cliente.setDireccion("avenida siempre viva");
-		cliente.setEdad(25l);
-		cliente.setEstado("soltero");
-		cliente.setTelefono("3209741369");
+		cliente.setEdad(28l);
+		cliente.setEstado("casado");
+		cliente.setTelefono("3209741999");
 
 		ClienteDao clienteDao = new ClienteDao();
 

@@ -45,21 +45,23 @@ public class AgregarClienteController extends HttpServlet {
 		String estado= request.getParameter("estado");
 		
 		
-		if(cedula!=null||!cedula.isEmpty()||direccion!=null||!direccion.isEmpty()||
-				telefono!=null||!telefono.isEmpty()||edad!=null||!edad.isEmpty()||
-						estado!=null||!estado.isEmpty()) {
+		if(cedula!=null&&!cedula.isEmpty()&&direccion!=null&&!direccion.isEmpty()&&
+				telefono!=null&&!telefono.isEmpty()&&edad!=null&&!edad.isEmpty()&&
+						estado!=null&&!estado.isEmpty()) {
 			Cliente cliente = new Cliente();
 			cliente.setCedula(cedula);
 			cliente.setDireccion(direccion);
 			cliente.setEdad(Long.parseLong(edad));
-			cliente.setEstado(telefono);
-			cliente.setTelefono("3209741369");
+			cliente.setEstado(estado);
+			cliente.setTelefono(telefono);
 			ClienteDao clienteDao = new ClienteDao();
 			clienteDao.insert(cliente);
-			request.setAttribute("msgResultado", "Usuario Resgistrado con exito"); 
+			request.setAttribute("msgResultado", "Usuario Resgistrado con exito");
+			request.setAttribute("bandera", true);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}else {
-			request.setAttribute("msgResultado", "Esta mal diligenciado el formulario"); 
+			request.setAttribute("msgResultado", "Esta mal diligenciado el formulario");
+			request.setAttribute("bandera", false);
 			request.getRequestDispatcher("/index.jsp").forward(request, response);
 		}
 		
