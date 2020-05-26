@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Entities.Cliente;
+import Model.ClienteDao;
+
 /**
  * Servlet implementation class AgregarClienteController
  */
@@ -35,6 +38,33 @@ public class AgregarClienteController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String cedula = request.getParameter("cedula");
+		String direccion = request.getParameter("direccion");
+		String telefono = request.getParameter("telefono");
+		String edad= request.getParameter("edad");
+		String estado= request.getParameter("estado");
+		
+		
+		if(cedula!=null||!cedula.isEmpty()||direccion!=null||!direccion.isEmpty()||
+				telefono!=null||!telefono.isEmpty()||edad!=null||!edad.isEmpty()||
+						estado!=null||!estado.isEmpty()) {
+			Cliente cliente = new Cliente();
+			cliente.setCedula(cedula);
+			cliente.setDireccion(direccion);
+			cliente.setEdad(Long.parseLong(edad));
+			cliente.setEstado(telefono);
+			cliente.setTelefono("3209741369");
+			ClienteDao clienteDao = new ClienteDao();
+			clienteDao.insert(cliente);
+			request.setAttribute("msgResultado", "Usuario Resgistrado con exito"); 
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}else {
+			request.setAttribute("msgResultado", "Esta mal diligenciado el formulario"); 
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+		}
+		
+		
+		
 		doGet(request, response);
 	}
 
