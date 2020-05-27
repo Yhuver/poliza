@@ -65,6 +65,7 @@
                            <li><a href="vehiculo.jsp">SOAT</a></li>
                            <li><a href="poliza.jsp">Poliza</a></li>
                             <li><a href="listado.jsp">Listado</a></li>
+                            <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                         </ul>
                      </li>
                     

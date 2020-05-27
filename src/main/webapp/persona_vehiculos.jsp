@@ -1,6 +1,4 @@
 <!doctype html>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -17,6 +15,9 @@
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
    </head>
    <body>
       <!-- loader Start -->
@@ -63,10 +64,9 @@
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="vehiculo.jsp">SOAT</a></li>
                            <li><a href="poliza.jsp">Poliza</a></li>
-                           
                             <li><a href="listado.jsp">Listado</a></li>
+                             <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                             
-                            <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                         </ul>
                      </li>
                     
@@ -197,57 +197,57 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Formulario de Clientes</h4>
+                              <h4 class="card-title">Aca podras ver los vehiculos que posee cada cliente</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <p>Aca podras registrar a los clientes</p>
+           
+                           
                            <form>
-                           <div class="form-group">
-                                 <label for="pwd">Persona:</label>
-                                 
-                       <jsp:useBean id="listaelem" class="Model.ClienteDao">
-                    </jsp:useBean>
-           <select class="form-control" id="persona" name="persona">
-                    <option selected value="defecto">No Ha Seleccionado Ninguna persona</option>
-                             <c:forEach var="lista1" items="${listaelem.list()}">
-                               <option value="${lista1.getId()}"><c:out value="${lista1.getCedula()}"/></option>
-                               </c:forEach>
-                                    
+                                                 <label for="pwd">Clientes:</label>
+           <select class="form-control col-6" id="cliente">
+                                   
+                                    <option>Prueba</option>
+                                    <option>Sasdsa</option>
+                                    <option>Viudoasd</option>
                               
                                  </select>
-                              </div>
-                              <h2>Datos del vehiculo</h2>
-                              <div class="form-group">
-                                 <label for="email">modelo:</label>
-                                 <input type="number" class="form-control" name="modelo" id="modelo">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Marca:</label>
-                                 <input type="text" class="form-control" name="marca" id="marca" >
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Año:</label>
-                                 <input type="number"  name="anio" class="form-control" id="anio">
-                              </div>
-                              
-                              <div class="form-group">
-                                 <label for="pwd">Placa:</label>
-                                 <input type="text" class="form-control"  name="placa" id="placa">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Serial de carroceria:</label>
-                                 <input type="text" class="form-control"  name="serial" id="serial">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">valor:</label>
-                                 <input type="text" class="form-control"  name="valor" id="valor">
-                              </div>
-           
-                              <input type="button" class="btn btn-primary" id="registrar_soat" value="Comprar Soat">
-                              
-                           </form>
-                           <div id="result"></div>
+                                 <br>
+                                       <button type="submit" class="btn btn-primary" id="listar_vehiculos">Listar vehiculos</button>
+                                 <br>
+                                 </form>
+                                 <br><br>
+                     <table id="example" class="cell-border" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+        </tbody>
+        
+    </table>
                         </div>
                      </div>
                   </div>
@@ -265,6 +265,7 @@
                      <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
                      <li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
                   </ul>
+                  
                </div>
                <div class="col-lg-6 text-right">
                   Copyright 2020 <a href="#">Sofbox</a> All Rights Reserved.
@@ -305,24 +306,63 @@
       <script src="js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
+        
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+      <script>
+      $(document).ready( function () {
+    	    $('#example').DataTable();
+    	} );</script>
    </body>
    <script>
    
-   $("#registrar_soat").click(function(){
+$(document).ready(function(){
+	$("#valor_aire").css("display","none");
+	$("#valor_rines").css("display","none");
+	$("#valor_radio").css("display","none");
+});
+   
+   $("#aire").click(function(){
+	   
+	   if( $('#aire').prop('checked') ) {
+			$("#valor_aire").css("display","");  
+		}else{
+			$("#valor_aire").css("display","none");
+		}
+
+   })
+    $("#rines").click(function(){
+	   
+	   if( $('#rines').prop('checked') ) {
+			$("#valor_rines").css("display","");  
+		}else{
+			$("#valor_rines").css("display","none");
+			
+		}
+
+   })
+    $("#radio").click(function(){
+	   
+	   if( $('#radio').prop('checked') ) {
+			$("#valor_radio").css("display","");  
+		}else{
+			$("#valor_radio").css("display","none");
+		}
+
+   })
+   
+   $("#registrar_cliente").click(function(){
 	   $.ajax({
-			url : 'RegistrarSoatController',
+			url : 'AgregarClienteController',
 			data : {
-				'persona' : $('#persona').val(),
-				'modelo': $('#modelo').val(),
-				'marca': $('#marca').val(),
-				'anio': $('#anio').val(),
-				'placa': $('#placa').val(),
-				'serial': $('#serial').val(),
-				'valor': $('#valor').val()
+				'cedula' : $('#cedula').val(),
+				'direccion': $('#direccion').val(),
+				'telefono': $('#telefono').val(),
+				'estado': $('#estado').val(),
+				'edad': $('#edad').val()
 			},
 			method:'post',
 			success : function(responseText) {
-				$("#result").html(responseText)
+				console.log("Prueba")
 			}
 		}); 
    });
