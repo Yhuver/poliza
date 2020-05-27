@@ -60,7 +60,7 @@
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="soat.jsp">Soat</a></li>
-                           <li><a href="poliza.jsp">Riesgos</a></li>
+                           <li><a href="poliza.jsp">Riesgo</a></li>
                            
                             <li><a href="listado.jsp">Listado</a></li>
                         </ul>

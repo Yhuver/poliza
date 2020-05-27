@@ -1,4 +1,6 @@
 <!doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -63,7 +65,7 @@
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="vehiculo.jsp">SOAT</a></li>
-                           <li><a href="poliza.jsp">Poliza</a></li>
+                           <li><a href="poliza.jsp">Riesgo</a></li>
                             <li><a href="listado.jsp">Listado</a></li>
                         </ul>
                      </li>
@@ -203,31 +205,27 @@
                      <table id="example" class="cell-border" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Año</th>
+                <th>placa</th>
+                <th>Serial</th>
+                <th>Valor</th>
             </tr>
         </thead>
         <tbody>
+        <jsp:useBean id="listaelem" class="Model.VehiculoDao">
+                    </jsp:useBean>
+            <c:forEach var="lista1" items="${listaelem.list()}">
             <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td>$320,800</td>
+                <td>${lista1.getModelo()}</td>
+                <td>${lista1.getMarca()}</td>
+                <td>${lista1.getAnio()}</td>
+                <td>${lista1.getPlaca()}</td>
+                <td>${lista1.getSerial()}</td>
+                <td>${lista1.getValor()}</td>
             </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td>$170,750</td>
-            </tr>
+            </c:forEach>
         </tbody>
         
     </table>
