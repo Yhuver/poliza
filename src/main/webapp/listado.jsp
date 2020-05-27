@@ -15,6 +15,9 @@
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="css/responsive.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
    </head>
    <body>
       <!-- loader Start -->
@@ -59,9 +62,8 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="soat.jsp">Soat</a></li>
-                           <li><a href="poliza.jsp">Riesgos</a></li>
-                           
+                           <li><a href="vehiculo.jsp">SOAT</a></li>
+                           <li><a href="poliza.jsp">Poliza</a></li>
                             <li><a href="listado.jsp">Listado</a></li>
                         </ul>
                      </li>
@@ -198,42 +200,37 @@
                         </div>
                         <div class="iq-card-body">
                            <p>Aca podras registrar a los clientes</p>
-                           <form>
-                              <div class="form-group">
-                                 <label for="pwd">Clientes:</label>
-           <select class="form-control" id="estado">
-                                   
-                                    <option>Prueba</option>
-                                    <option>Sasdsa</option>
-                                    <option>Viudoasd</option>
-                              
-                                 </select>
-                              </div> <div class="form-group">
-                                 <label for="pwd">Dirección:</label>
-                                 <input type="text" class="form-control" id="direccion">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Telefono:</label>
-                                 <input type="text" class="form-control" id="telefono">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Estado:</label>
-           <select class="form-control" id="estado">
-                                   
-                                    <option>Casado</option>
-                                    <option>Soltero</option>
-                                    <option>Viudo</option>
-                              
-                                 </select>
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Edad:</label>
-                                 <input type="number" class="form-control" id="edad">
-                              </div>
-                              
-                              <button type="submit" class="btn btn-primary" id="registrar_cliente">Registrar</button>
-                              
-                           </form>
+                     <table id="example" class="cell-border" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+        </tbody>
+        
+    </table>
                         </div>
                      </div>
                   </div>
@@ -251,6 +248,7 @@
                      <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
                      <li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
                   </ul>
+                  
                </div>
                <div class="col-lg-6 text-right">
                   Copyright 2020 <a href="#">Sofbox</a> All Rights Reserved.
@@ -291,12 +289,53 @@
       <script src="js/chart-custom.js"></script>
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
+        
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+      <script>
+      $(document).ready( function () {
+    	    $('#example').DataTable();
+    	} );</script>
    </body>
    <script>
    
+$(document).ready(function(){
+	$("#valor_aire").css("display","none");
+	$("#valor_rines").css("display","none");
+	$("#valor_radio").css("display","none");
+});
+   
+   $("#aire").click(function(){
+	   
+	   if( $('#aire').prop('checked') ) {
+			$("#valor_aire").css("display","");  
+		}else{
+			$("#valor_aire").css("display","none");
+		}
+
+   })
+    $("#rines").click(function(){
+	   
+	   if( $('#rines').prop('checked') ) {
+			$("#valor_rines").css("display","");  
+		}else{
+			$("#valor_rines").css("display","none");
+			
+		}
+
+   })
+    $("#radio").click(function(){
+	   
+	   if( $('#radio').prop('checked') ) {
+			$("#valor_radio").css("display","");  
+		}else{
+			$("#valor_radio").css("display","none");
+		}
+
+   })
+   
    $("#registrar_cliente").click(function(){
 	   $.ajax({
-			url : 'GetUserServlet',
+			url : 'AgregarClienteController',
 			data : {
 				'cedula' : $('#cedula').val(),
 				'direccion': $('#direccion').val(),
@@ -304,6 +343,7 @@
 				'estado': $('#estado').val(),
 				'edad': $('#edad').val()
 			},
+			method:'post',
 			success : function(responseText) {
 				console.log("Prueba")
 			}
