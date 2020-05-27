@@ -61,12 +61,13 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                              <li><a href="soat.jsp">SOAT</a></li>
-                           <li><a href="poliza.jsp">Riesgo</a></li>
-                           
-                            <li><a href="listado.jsp">Listado</a></li>
-                             <li><a href="persona_vehiculos.jsp">Listado vehiculos persona</a></li>
-                         <li><a href="listado.jsp">Comision</a></li>
+                           <li><a href="index.jsp">Resgitrar Clientes</a></li>
+                           <li><a href="soat.jsp">Resgitrar SOAT</a></li>
+                           <li><a href="poliza.jsp">Resgitrar Riesgo</a></li>
+                      
+                            <li><a href="listado.jsp">Listado de Vehiculos</a></li>
+                             <li><a href="persona_vehiculos.jsp">Listado vehiculos por persona</a></li>
+                         <li><a href="comision.jsp">Comision</a></li>
                         </ul>
                      </li>
                     

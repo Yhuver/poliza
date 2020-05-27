@@ -1,4 +1,6 @@
 <!doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -59,10 +61,13 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="soat.jsp">Soat</a></li>
-                           <li><a href="poliza.jsp">Riesgo</a></li>
-                           
-                            <li><a href="listado.jsp">Listado</a></li>
+                           <li><a href="index.jsp">Resgitrar Clientes</a></li>
+                           <li><a href="soat.jsp">Resgitrar SOAT</a></li>
+                           <li><a href="poliza.jsp">Resgitrar Riesgo</a></li>
+                      
+                            <li><a href="listado.jsp">Listado de Vehiculos</a></li>
+                             <li><a href="persona_vehiculos.jsp">Listado vehiculos por persona</a></li>
+                         <li><a href="comision.jsp">Comision</a></li>
                         </ul>
                      </li>
                     
@@ -193,47 +198,18 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Formulario de Clientes</h4>
+                              <h4 class="card-title">Comision</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           <p>Aca podras registrar a los clientes</p>
+                         
                            <form>
-                              <div class="form-group">
-                                 <label for="pwd">Clientes:</label>
-           <select class="form-control" id="estado">
-                                   
-                                    <option>Prueba</option>
-                                    <option>Sasdsa</option>
-                                    <option>Viudoasd</option>
-                              
-                                 </select>
-                              </div> <div class="form-group">
-                                 <label for="pwd">Dirección:</label>
-                                 <input type="text" class="form-control" id="direccion">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Telefono:</label>
-                                 <input type="text" class="form-control" id="telefono">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Estado:</label>
-           <select class="form-control" id="estado">
-                                   
-                                    <option>Casado</option>
-                                    <option>Soltero</option>
-                                    <option>Viudo</option>
-                              
-                                 </select>
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Edad:</label>
-                                 <input type="number" class="form-control" id="edad">
-                              </div>
-                              
-                              <button type="submit" class="btn btn-primary" id="registrar_cliente">Registrar</button>
+                                              <input type="button" class="btn btn-primary" id="consultar_comision" value="Calcular comisión">
                               
                            </form>
+                           
+                           <br>
+                           <div id="result"></div>
                         </div>
                      </div>
                   </div>
@@ -261,51 +237,29 @@
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="js/jquery.min.js"></script>
+       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
       <script src="js/jquery.appear.js"></script>
       <!-- Countdown JavaScript -->
-      <script src="js/countdown.min.js"></script>
-      <!-- Counterup JavaScript -->
-      <script src="js/waypoints.min.js"></script>
-      <script src="js/jquery.counterup.min.js"></script>
-      <!-- Wow JavaScript -->
-      <script src="js/wow.min.js"></script>
-      <!-- Apexcharts JavaScript -->
-      <script src="js/apexcharts.js"></script>
-      <!-- Slick JavaScript -->
-      <script src="js/slick.min.js"></script>
-      <!-- Select2 JavaScript -->
       <script src="js/select2.min.js"></script>
       <!-- Owl Carousel JavaScript -->
-      <script src="js/owl.carousel.min.js"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="js/jquery.magnific-popup.min.js"></script>
-      <!-- Smooth Scrollbar JavaScript -->
-      <script src="js/smooth-scrollbar.js"></script>
-      <!-- lottie JavaScript -->
-      <script src="js/lottie.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="js/chart-custom.js"></script>
+    
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
+   
    </body>
    <script>
    
-   $("#registrar_cliente").click(function(){
+   $("#consultar_comision").click(function(){
 	   $.ajax({
-			url : 'GetUserServlet',
+			url : 'ConsultarComisionController',
 			data : {
-				'cedula' : $('#cedula').val(),
-				'direccion': $('#direccion').val(),
-				'telefono': $('#telefono').val(),
-				'estado': $('#estado').val(),
-				'edad': $('#edad').val()
 			},
+			method:'post',
 			success : function(responseText) {
-				console.log("Prueba")
+				$("#result").html(responseText)
 			}
 		}); 
    });
