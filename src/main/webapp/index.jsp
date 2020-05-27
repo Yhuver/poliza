@@ -243,11 +243,9 @@
                                  <input name="edad" type="number" class="form-control" id="edad">
                               </div>
                               
-<<<<<<< HEAD
-                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="registrar">
-=======
+
                               <button class="btn btn-primary" id="registrar_cliente">Registrar</button>
->>>>>>> 68a5f31d58ac5687fa889a2ea8278739bd9611a3
+
                               
                            </form>
                         </div>
