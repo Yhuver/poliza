@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "vehiculos")
 public class Vehiculo {
 	
 	@Id
@@ -31,7 +31,7 @@ public class Vehiculo {
 	@Column(name = "vehi_placa")
 	private String placa;
 	
-	@Column(name = "vehi_seril")
+	@Column(name = "vehi_serial")
 	private String serial;
 	
 	@Column(name = "vehi_valor")

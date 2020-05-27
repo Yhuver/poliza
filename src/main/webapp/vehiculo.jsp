@@ -1,4 +1,6 @@
 <!doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -199,44 +201,49 @@
                            <form>
                            <div class="form-group">
                                  <label for="pwd">Persona:</label>
+                                 
+                       <jsp:useBean id="listaelem" class="Model.ClienteDao">
+                    </jsp:useBean>
            <select class="form-control" id="persona" name="persona">
-                                   
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                    <option selected value="defecto">No Ha Seleccionado Ninguna persona</option>
+                             <c:forEach var="lista1" items="${listaelem.list()}">
+                               <option value="${lista1.getId()}"><c:out value="${lista1.getCedula()}"/></option>
+                               </c:forEach>
+                                    
                               
                                  </select>
                               </div>
                               <h2>Datos del vehiculo</h2>
                               <div class="form-group">
                                  <label for="email">modelo:</label>
-                                 <input type="number" class="form-control" name="modelo" id="marca">
+                                 <input type="number" class="form-control" name="modelo" id="modelo">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Marca:</label>
-                                 <input type="text" class="form-control" name="marca" id="direccion" >
+                                 <input type="text" class="form-control" name="marca" id="marca" >
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Año:</label>
-                                 <input type="number"  name="anio"class="form-control" id="telefono">
+                                 <input type="number"  name="anio" class="form-control" id="anio">
                               </div>
                               
                               <div class="form-group">
                                  <label for="pwd">Placa:</label>
-                                 <input type="text" class="form-control"  name="placa" id="edad">
+                                 <input type="text" class="form-control"  name="placa" id="placa">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Serial de carroceria:</label>
-                                 <input type="text" class="form-control"  name="serial" id="edad">
+                                 <input type="text" class="form-control"  name="serial" id="serial">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">valor:</label>
-                                 <input type="text" class="form-control"  name="valor" id="edad">
+                                 <input type="text" class="form-control"  name="valor" id="valor">
                               </div>
            
-                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="Comprar Soat">
+                              <input type="button" class="btn btn-primary" id="registrar_soat" value="Comprar Soat">
                               
                            </form>
+                           <div id="result"></div>
                         </div>
                      </div>
                   </div>
@@ -297,19 +304,21 @@
    </body>
    <script>
    
-   $("#registrar_cliente").click(function(){
+   $("#registrar_soat").click(function(){
 	   $.ajax({
-			url : 'AgregarClienteController',
+			url : 'RegistrarSoatController',
 			data : {
-				'cedula' : $('#cedula').val(),
-				'direccion': $('#direccion').val(),
-				'telefono': $('#telefono').val(),
-				'estado': $('#estado').val(),
-				'edad': $('#edad').val()
+				'persona' : $('#persona').val(),
+				'modelo': $('#modelo').val(),
+				'marca': $('#marca').val(),
+				'anio': $('#anio').val(),
+				'placa': $('#placa').val(),
+				'serial': $('#serial').val(),
+				'valor': $('#valor').val()
 			},
 			method:'post',
 			success : function(responseText) {
-				console.log("Prueba")
+				$("#result").html(responseText)
 			}
 		}); 
    });

@@ -36,10 +36,10 @@ public class Conexion<T> {
 		return object;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<T> list(){
-		TypedQuery<T> consulta= em.createNamedQuery(c.getSimpleName()+".findAll", c);
-		List<T> lista = (List<T>) consulta.getResultList();
-		return lista;
+        return em.createQuery("Select t from " + c.getSimpleName() + " t").getResultList();
+
 	}
 	
 	
