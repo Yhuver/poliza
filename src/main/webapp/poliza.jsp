@@ -234,15 +234,25 @@
                                  <input type="text" class="form-control"  name="valor" id="edad">
                               </div>
                                                  <h2>Desea asegurar estas partes:</h2>
-                              <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                    <label class="custom-control-label" for="customCheck1">Default checkbox</label>
-                                 </div>
-                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="customCheck2">
-                                    <label class="custom-control-label" for="customCheck2">Default checkbox</label>
-                                 </div>
-                              <input type="button" class="btn btn-primary" id="registrar_cliente" value="Comprar Soat">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" id="radio" >
+                              <label class="custom-control-label" for="radio">Radio</label>
+                              
+                                    <input type="number" class="form-control"  name="valor_radio" id="valor_radio">
+                           </div>
+                           <div class="custom-control custom-checkbox custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" id="rines">
+                              <label class="custom-control-label" for="rines">Rines</label>
+                              
+                                    <input type="number" class="form-control"  name="valor_rines" id="valor_rines">
+                           </div>
+                              <div class="custom-control custom-checkbox custom-control-inline">
+                              <input type="checkbox" class="custom-control-input" id="aire" >
+                              <label class="custom-control-label" for="aire">Aire acondicionado</label>
+                              
+                                    <input type="number" class="form-control"  name="valor_aire" id="valor_aire">
+                           </div>
+                                   <input type="button" class="btn btn-primary" id="registrar_cliente" value="Comprar Soat">
                               
                            </form>
                         </div>
@@ -305,6 +315,41 @@
       <script src="js/custom.js"></script>
    </body>
    <script>
+   
+$(document).ready(function(){
+	$("#valor_aire").css("display","none");
+	$("#valor_rines").css("display","none");
+	$("#valor_radio").css("display","none");
+});
+   
+   $("#aire").click(function(){
+	   
+	   if( $('#aire').prop('checked') ) {
+			$("#valor_aire").css("display","");  
+		}else{
+			$("#valor_aire").css("display","none");
+		}
+
+   })
+    $("#rines").click(function(){
+	   
+	   if( $('#rines').prop('checked') ) {
+			$("#valor_rines").css("display","");  
+		}else{
+			$("#valor_rines").css("display","none");
+			
+		}
+
+   })
+    $("#radio").click(function(){
+	   
+	   if( $('#radio').prop('checked') ) {
+			$("#valor_radio").css("display","");  
+		}else{
+			$("#valor_radio").css("display","none");
+		}
+
+   })
    
    $("#registrar_cliente").click(function(){
 	   $.ajax({
