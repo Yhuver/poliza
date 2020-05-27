@@ -67,6 +67,7 @@
                            <li><a href="vehiculo.jsp">SOAT</a></li>
                            <li><a href="poliza.jsp">Riesgo</a></li>
                             <li><a href="listado.jsp">Listado</a></li>
+                            <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                         </ul>
                      </li>
                     
@@ -211,6 +212,7 @@
                 <th>placa</th>
                 <th>Serial</th>
                 <th>Valor</th>
+                <th>Valor pagado por el seguro</th>
             </tr>
         </thead>
         <tbody>
@@ -224,6 +226,7 @@
                 <td>${lista1.getPlaca()}</td>
                 <td>${lista1.getSerial()}</td>
                 <td>${lista1.getValor()}</td>
+                <td>${lista1.getValorSeguro()}</td>
             </tr>
             </c:forEach>
         </tbody>

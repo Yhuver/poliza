@@ -85,7 +85,6 @@ public class RegistrarRiesgoController extends HttpServlet {
 					return;
 				}
 			}
-			vehiculoDao.insert(vehiculo);
 
 			
 			double valorRiesgo=0;
@@ -115,6 +114,9 @@ public class RegistrarRiesgoController extends HttpServlet {
 			}if(aire!=null&&!aire.isEmpty()) {
 				valorRiesgo+=Double.parseDouble(aire);
 			}
+			
+			vehiculo.setValorSeguro(valorRiesgo);
+			vehiculoDao.insert(vehiculo);
 			RiesgoDao riesgoDao = new RiesgoDao();
 			Riesgo riesgo = new Riesgo();
 			riesgo.setValor(valorRiesgo);

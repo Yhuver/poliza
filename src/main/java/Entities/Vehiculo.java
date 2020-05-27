@@ -37,12 +37,23 @@ public class Vehiculo {
 	@Column(name = "vehi_valor")
 	private Double valor;
 	
+	@Column(name = "vehi_precio_seguro")
+	private Double valorSeguro;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "clie_id")
 	private Cliente cliente;
 
 	public Long getId() {
 		return id;
+	}
+
+	public Double getValorSeguro() {
+		return valorSeguro;
+	}
+
+	public void setValorSeguro(Double valorSeguro) {
+		this.valorSeguro = valorSeguro;
 	}
 
 	public void setId(Long id) {

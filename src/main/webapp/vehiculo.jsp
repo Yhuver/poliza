@@ -65,6 +65,8 @@
                            <li><a href="poliza.jsp">Riesgo</a></li>
                            
                             <li><a href="listado.jsp">Listado</a></li>
+                            
+                            <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                         </ul>
                      </li>
                     

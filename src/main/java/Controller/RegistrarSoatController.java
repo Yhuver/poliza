@@ -83,14 +83,15 @@ public class RegistrarSoatController extends HttpServlet {
 					return;
 				}
 			}
-			vehiculoDao.insert(vehiculo);
-
-			SoatDao soatDao = new SoatDao();
 			double valorSoat = vehiculo.getValor() * 0.01;
+			vehiculo.setValorSeguro(valorSoat);
+			vehiculoDao.insert(vehiculo);
+			SoatDao soatDao = new SoatDao();
 			Soat soat = new Soat();
 			soat.setValor(valorSoat);
 			soat.setCliente(clienteSearch);
 			soat.setVehiculo(vehiculo);
+			
 			soatDao.insert(soat);
 			
 			response.setContentType("text/plain ");
