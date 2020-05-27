@@ -1,4 +1,6 @@
 <!doctype html>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -60,7 +62,7 @@
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="vehiculo.jsp">SOAT</a></li>
-                           <li><a href="poliza.jsp">Poliza</a></li>
+                           <li><a href="poliza.jsp">Riesgo</a></li>
                            
                             <li><a href="listado.jsp">Listado</a></li>
                         </ul>
@@ -201,62 +203,66 @@
                            <form>
                            <div class="form-group">
                                  <label for="pwd">Persona:</label>
+          <jsp:useBean id="listaelem" class="Model.ClienteDao">
+                    </jsp:useBean>
            <select class="form-control" id="persona" name="persona">
-                                   
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                    <option selected value="defecto">No Ha Seleccionado Ninguna persona</option>
+                             <c:forEach var="lista1" items="${listaelem.list()}">
+                               <option value="${lista1.getId()}"><c:out value="${lista1.getCedula()}"/></option>
+                               </c:forEach>
                               
                                  </select>
                               </div>
                               <h2>Datos del vehiculo</h2>
                               <div class="form-group">
                                  <label for="email">modelo:</label>
-                                 <input type="number" class="form-control" name="modelo" id="marca">
+                                 <input type="number" class="form-control" name="modelo" id="modelo">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Marca:</label>
-                                 <input type="text" class="form-control" name="marca" id="direccion" >
+                                 <input type="text" class="form-control" name="marca" id="marca" >
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Año:</label>
-                                 <input type="number"  name="anio"class="form-control" id="telefono">
+                                 <input type="number"  name="anio" class="form-control" id="anio">
                               </div>
                               
                               <div class="form-group">
                                  <label for="pwd">Placa:</label>
-                                 <input type="text" class="form-control"  name="placa" id="edad">
+                                 <input type="text" class="form-control"  name="placa" id="placa">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">Serial de carroceria:</label>
-                                 <input type="text" class="form-control"  name="serial" id="edad">
+                                 <input type="text" class="form-control"  name="serial" id="serial">
                               </div>
                               <div class="form-group">
                                  <label for="pwd">valor:</label>
-                                 <input type="text" class="form-control"  name="valor" id="edad">
+                                 <input type="text" class="form-control"  name="valor" id="valor">
                               </div>
                                                  <h2>Desea asegurar estas partes:</h2>
                                 <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="radio" >
+                              <input type="checkbox" class="custom-control-input" id="radio_chec" >
                               <label class="custom-control-label" for="radio">Radio</label>
                               
-                                    <input type="number" class="form-control"  name="valor_radio" id="valor_radio">
+                                    <input type="number" class="form-control"  name="radio" id="radio">
                            </div>
                            <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="rines">
+                              <input type="checkbox" class="custom-control-input" id="rines_chec" name="rines">
                               <label class="custom-control-label" for="rines">Rines</label>
                               
-                                    <input type="number" class="form-control"  name="valor_rines" id="valor_rines">
+                                    <input type="number" class="form-control"  name="rines" id="rines">
                            </div>
                               <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="aire" >
+                              <input type="checkbox" class="custom-control-input" id="aire_chec" name="aire">
                               <label class="custom-control-label" for="aire">Aire acondicionado</label>
                               
-                                    <input type="number" class="form-control"  name="valor_aire" id="valor_aire">
+                                    <input type="number" class="form-control"  name="aire" id="aire">
                            </div>
-                                   <input type="button" class="btn btn-primary" id="registrar_cliente" value="Comprar Soat">
+                                   <input type="button" class="btn btn-primary" id="registrar_riesgo" value="Comprar Soat">
                               
                            </form>
+                           <br>
+                           <div id="result"></div>
                         </div>
                      </div>
                   </div>
@@ -353,19 +359,24 @@ $(document).ready(function(){
 
    })
    
-   $("#registrar_cliente").click(function(){
+   $("#registrar_riesgo").click(function(){
 	   $.ajax({
-			url : 'AgregarClienteController',
+			url : 'RegistrarRiesgoController',
 			data : {
-				'cedula' : $('#cedula').val(),
-				'direccion': $('#direccion').val(),
-				'telefono': $('#telefono').val(),
-				'estado': $('#estado').val(),
-				'edad': $('#edad').val()
+				'persona' : $('#persona').val(),
+				'modelo': $('#modelo').val(),
+				'marca': $('#marca').val(),
+				'anio': $('#anio').val(),
+				'placa': $('#placa').val(),
+				'serial': $('#serial').val(),
+				'valor': $('#valor').val(),
+				'radio': $('#radio').val(),
+				'rines': $('#rines').val(),
+				'aire': $('#aire').val()
 			},
 			method:'post',
 			success : function(responseText) {
-				console.log("Prueba")
+				$("#result").html(responseText)
 			}
 		}); 
    });

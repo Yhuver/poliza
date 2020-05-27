@@ -1,5 +1,7 @@
 package Entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,8 +14,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "riesgos")
-public class Riesgo {
+public class Riesgo implements Serializable{
 	
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1546471088742713936L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ries_id")
