@@ -17,6 +17,7 @@
       <link rel="stylesheet" href="css/style.css">
       <!-- Responsive CSS -->
       <link rel="stylesheet" href="css/responsive.css">
+
    </head>
    <body>
       <!-- loader Start -->
@@ -63,6 +64,8 @@
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                            <li><a href="vehiculo.jsp">SOAT</a></li>
                            <li><a href="poliza.jsp">Poliza</a></li>
+                           
+                            <li><a href="listado.jsp">Listado</a></li>
                         </ul>
                      </li>
                     
