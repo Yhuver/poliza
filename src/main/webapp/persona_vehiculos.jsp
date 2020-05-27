@@ -64,10 +64,12 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="vehiculo.jsp">SOAT</a></li>
-                           <li><a href="poliza.jsp">Poliza</a></li>
+                              <li><a href="soat.jsp">SOAT</a></li>
+                           <li><a href="poliza.jsp">Riesgo</a></li>
+                           
                             <li><a href="listado.jsp">Listado</a></li>
-                             <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
+                             <li><a href="persona_vehiculos.jsp">Listado vehiculos persona</a></li>
+                         <li><a href="listado.jsp">Comision</a></li>
                             
                         </ul>
                      </li>
@@ -266,37 +268,18 @@
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-      <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
       <script src="js/jquery.appear.js"></script>
       <!-- Countdown JavaScript -->
-      <script src="js/countdown.min.js"></script>
-      <!-- Counterup JavaScript -->
-      <script src="js/waypoints.min.js"></script>
-      <script src="js/jquery.counterup.min.js"></script>
-      <!-- Wow JavaScript -->
-      <script src="js/wow.min.js"></script>
-      <!-- Apexcharts JavaScript -->
-      <script src="js/apexcharts.js"></script>
-      <!-- Slick JavaScript -->
-      <script src="js/slick.min.js"></script>
-      <!-- Select2 JavaScript -->
       <script src="js/select2.min.js"></script>
       <!-- Owl Carousel JavaScript -->
-      <script src="js/owl.carousel.min.js"></script>
-      <!-- Magnific Popup JavaScript -->
-      <script src="js/jquery.magnific-popup.min.js"></script>
-      <!-- Smooth Scrollbar JavaScript -->
-      <script src="js/smooth-scrollbar.js"></script>
-      <!-- lottie JavaScript -->
-      <script src="js/lottie.js"></script>
-      <!-- Chart Custom JavaScript -->
-      <script src="js/chart-custom.js"></script>
+    
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
-        
+     
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
       <script>
       $(document).ready( function () {

@@ -61,7 +61,7 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                             <li><a href="soat.jsp">SOAT</a></li>
+                              <li><a href="soat.jsp">SOAT</a></li>
                            <li><a href="poliza.jsp">Riesgo</a></li>
                            
                             <li><a href="listado.jsp">Listado</a></li>
@@ -197,70 +197,13 @@
                      <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                            <div class="iq-header-title">
-                              <h4 class="card-title">Formulario de Poliza</h4>
+                              <h4 class="card-title">Comision</h4>
                            </div>
                         </div>
                         <div class="iq-card-body">
-                           
+                         
                            <form>
-                           <div class="form-group">
-                                 <label for="pwd">Persona:</label>
-          <jsp:useBean id="listaelem" class="Model.ClienteDao">
-                    </jsp:useBean>
-           <select class="form-control" id="persona" name="persona">
-                    <option selected value="defecto">No Ha Seleccionado Ninguna persona</option>
-                             <c:forEach var="lista1" items="${listaelem.list()}">
-                               <option value="${lista1.getId()}"><c:out value="${lista1.getCedula()}"/></option>
-                               </c:forEach>
-                              
-                                 </select>
-                              </div>
-                              <h2>Datos del vehiculo</h2>
-                              <div class="form-group">
-                                 <label for="email">modelo:</label>
-                                 <input type="number" class="form-control" name="modelo" id="modelo">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Marca:</label>
-                                 <input type="text" class="form-control" name="marca" id="marca" >
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Año:</label>
-                                 <input type="number"  name="anio" class="form-control" id="anio">
-                              </div>
-                              
-                              <div class="form-group">
-                                 <label for="pwd">Placa:</label>
-                                 <input type="text" class="form-control"  name="placa" id="placa">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Serial de carroceria:</label>
-                                 <input type="text" class="form-control"  name="serial" id="serial">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">valor:</label>
-                                 <input type="text" class="form-control"  name="valor" id="valor">
-                              </div>
-                                                 <h2>Desea asegurar estas partes:</h2>
-                                <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="radio_chec" >
-                              <label class="custom-control-label" for="radio_chec">Radio</label>
-                              
-                                    <input type="number" class="form-control"  name="radio" id="radio">
-                           </div>
-                           <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="rines_chec" name="rines">
-                              <label class="custom-control-label" for="rines_chec">Rines</label>
-                              
-                                    <input type="number" class="form-control"  name="rines" id="rines">
-                           </div>
-                              <div class="custom-control custom-checkbox custom-control-inline">
-                              <input type="checkbox" class="custom-control-input" id="aire_chec" name="aire">
-                              <label class="custom-control-label" for="aire_chec">Aire acondicionado</label>
-                              
-                                    <input type="number" class="form-control"  name="aire" id="aire">
-                           </div>
-                                   <input type="button" class="btn btn-primary" id="registrar_riesgo" value="Comprar Soat">
+                                              <input type="button" class="btn btn-primary" id="registrar_soat" value="Comprar Soat">
                               
                            </form>
                            <br>
@@ -282,7 +225,6 @@
                      <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
                      <li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
                   </ul>
-                  
                </div>
                <div class="col-lg-6 text-right">
                   Copyright 2020 <a href="#">Sofbox</a> All Rights Reserved.
@@ -293,7 +235,7 @@
       <!-- Footer END -->
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-     <script src="js/jquery.min.js"></script>
+       <script src="js/jquery.min.js"></script>
       <script src="js/popper.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
       <!-- Appear JavaScript -->
@@ -304,47 +246,13 @@
     
       <!-- Custom JavaScript -->
       <script src="js/custom.js"></script>
+   
    </body>
    <script>
    
-   $(document).ready(function(){
-		$("#aire").css("display","none");
-		$("#rines").css("display","none");
-		$("#radio").css("display","none");
-	});
-	   
-	   $("#aire_chec").click(function(){
-		   
-		   if( $('#aire_chec').prop('checked') ) {
-				$("#aire").css("display","");  
-			}else{
-				$("#aire").css("display","none");
-			}
-
-	   })
-	    $("#rines_chec").click(function(){
-		   
-		   if( $('#rines_chec').prop('checked') ) {
-				$("#rines").css("display","");  
-			}else{
-				$("#rines").css("display","none");
-				
-			}
-
-	   })
-	    $("#radio_chec").click(function(){
-		   
-		   if( $('#radio_chec').prop('checked') ) {
-				$("#radio").css("display","");  
-			}else{
-				$("#radio").css("display","none");
-			}
-
-	   })
-   
-   $("#registrar_riesgo").click(function(){
+   $("#registrar_soat").click(function(){
 	   $.ajax({
-			url : 'RegistrarRiesgoController',
+			url : 'RegistrarSoatController',
 			data : {
 				'persona' : $('#persona').val(),
 				'modelo': $('#modelo').val(),
@@ -352,10 +260,7 @@
 				'anio': $('#anio').val(),
 				'placa': $('#placa').val(),
 				'serial': $('#serial').val(),
-				'valor': $('#valor').val(),
-				'radio': $('#radio').val(),
-				'rines': $('#rines').val(),
-				'aire': $('#aire').val()
+				'valor': $('#valor').val()
 			},
 			method:'post',
 			success : function(responseText) {

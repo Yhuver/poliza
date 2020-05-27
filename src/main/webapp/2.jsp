@@ -1,6 +1,4 @@
 <!doctype html>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html lang="en">
    <head>
       <!-- Required meta tags -->
@@ -61,12 +59,10 @@
                      <li>
                         <a href="#dashboard" class="iq-waves-effect collapsed"  data-toggle="collapse" aria-expanded="false"><i class="ri-home-4-line"></i><span>Dashboard</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                         <ul id="dashboard" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
-                           <li><a href="vehiculo.jsp">SOAT</a></li>
+                           <li><a href="soat.jsp">Soat</a></li>
                            <li><a href="poliza.jsp">Riesgo</a></li>
                            
                             <li><a href="listado.jsp">Listado</a></li>
-                            
-                            <li><a href="persona_vehiculos.jsp">Listado de vehiculos</a></li>
                         </ul>
                      </li>
                     
@@ -203,52 +199,41 @@
                         <div class="iq-card-body">
                            <p>Aca podras registrar a los clientes</p>
                            <form>
-                           <div class="form-group">
-                                 <label for="pwd">Persona:</label>
-                                 
-                       <jsp:useBean id="listaelem" class="Model.ClienteDao">
-                    </jsp:useBean>
-           <select class="form-control" id="persona" name="persona">
-                    <option selected value="defecto">No Ha Seleccionado Ninguna persona</option>
-                             <c:forEach var="lista1" items="${listaelem.list()}">
-                               <option value="${lista1.getId()}"><c:out value="${lista1.getCedula()}"/></option>
-                               </c:forEach>
-                                    
+                              <div class="form-group">
+                                 <label for="pwd">Clientes:</label>
+           <select class="form-control" id="estado">
+                                   
+                                    <option>Prueba</option>
+                                    <option>Sasdsa</option>
+                                    <option>Viudoasd</option>
+                              
+                                 </select>
+                              </div> <div class="form-group">
+                                 <label for="pwd">Dirección:</label>
+                                 <input type="text" class="form-control" id="direccion">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Telefono:</label>
+                                 <input type="text" class="form-control" id="telefono">
+                              </div>
+                              <div class="form-group">
+                                 <label for="pwd">Estado:</label>
+           <select class="form-control" id="estado">
+                                   
+                                    <option>Casado</option>
+                                    <option>Soltero</option>
+                                    <option>Viudo</option>
                               
                                  </select>
                               </div>
-                              <h2>Datos del vehiculo</h2>
                               <div class="form-group">
-                                 <label for="email">modelo:</label>
-                                 <input type="number" class="form-control" name="modelo" id="modelo">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Marca:</label>
-                                 <input type="text" class="form-control" name="marca" id="marca" >
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Año:</label>
-                                 <input type="number"  name="anio" class="form-control" id="anio">
+                                 <label for="pwd">Edad:</label>
+                                 <input type="number" class="form-control" id="edad">
                               </div>
                               
-                              <div class="form-group">
-                                 <label for="pwd">Placa:</label>
-                                 <input type="text" class="form-control"  name="placa" id="placa">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">Serial de carroceria:</label>
-                                 <input type="text" class="form-control"  name="serial" id="serial">
-                              </div>
-                              <div class="form-group">
-                                 <label for="pwd">valor:</label>
-                                 <input type="text" class="form-control"  name="valor" id="valor">
-                              </div>
-           
-                              <input type="button" class="btn btn-primary" id="registrar_soat" value="Comprar Soat">
+                              <button type="submit" class="btn btn-primary" id="registrar_cliente">Registrar</button>
                               
                            </form>
-                           <br>
-                           <div id="result"></div>
                         </div>
                      </div>
                   </div>
@@ -309,21 +294,18 @@
    </body>
    <script>
    
-   $("#registrar_soat").click(function(){
+   $("#registrar_cliente").click(function(){
 	   $.ajax({
-			url : 'RegistrarSoatController',
+			url : 'GetUserServlet',
 			data : {
-				'persona' : $('#persona').val(),
-				'modelo': $('#modelo').val(),
-				'marca': $('#marca').val(),
-				'anio': $('#anio').val(),
-				'placa': $('#placa').val(),
-				'serial': $('#serial').val(),
-				'valor': $('#valor').val()
+				'cedula' : $('#cedula').val(),
+				'direccion': $('#direccion').val(),
+				'telefono': $('#telefono').val(),
+				'estado': $('#estado').val(),
+				'edad': $('#edad').val()
 			},
-			method:'post',
 			success : function(responseText) {
-				$("#result").html(responseText)
+				console.log("Prueba")
 			}
 		}); 
    });
